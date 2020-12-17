@@ -35,7 +35,7 @@ namespace AuthService
             services.AddControllers();
             services.AddTransient<IAuthProvider, AuthProvider>();
             services.AddTransient<IAuthRepo, AuthRepo>();
-            services.AddSwaggerGen(c => { c.SwaggerDoc("AuthServiceWithoutDB", new OpenApiInfo { Title = "Auth Service Without DB API", Version = "1.0" }); });
+            services.AddSwaggerGen(c => { c.SwaggerDoc("AuthService", new OpenApiInfo { Title = "Auth Service API", Version = "1.0" }); });
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {
@@ -62,7 +62,7 @@ namespace AuthService
 
             app.UseHttpsRedirection();
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/AuthServiceWithoutDB/swagger.json", "AuthServiceWithoutDB")); ;
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/AuthService/swagger.json", "AuthService")); ;
 
             loggerFactory.AddLog4Net();
             app.UseRouting();
